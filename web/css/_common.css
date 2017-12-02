@@ -11,3 +11,37 @@ and open the template in the editor.
 .bg_login {background-color: whitesmoke; border-style: ridge; border-color: blue}
 
 .subline_text {border: crimson; border-bottom-style: ridge}
+
+.center {
+    left: -50%;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+}
+
+.tableC {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 0rem;
+  background-color: transparent;
+}
+
+.tableC th,
+.tableC td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 0px solid #e9ecef;
+}
+
+.tableC thead th {
+  vertical-align: bottom;
+  border-bottom: 0px solid #e9ecef;
+}
+
+.tableC tbody + tbody {
+  border-top: 0px solid #e9ecef;
+}
+
+.tableC .tableC {
+  background-color: #fff;
+}

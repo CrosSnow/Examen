@@ -13,6 +13,5 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
-        <%@include file="Header.jsp" %>
     </body>
 </html>
