@@ -23,8 +23,29 @@
                     <a href="Busqueda.jsp">Ver Pedidos</a><br>
                     <a href="#aiiuuudaaa">Ayuda</a><br>
                 </div>
+                <br>
                 <div class="col-lg-8">
                     <br>
+                    <h4>Pedido Número:</h4>
+                    <br>
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr class="alert-success">
+                                <th>Carretera</th>
+                                <th>Cantidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ruta 68</td>
+                                <td>20</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <h5>Total a pagar:</h5>
+                    <br>
+                    <h3>Opcion de envio</h3>
                 </div>
                 <div class="col-sm-2" style="text-align: center">
                     <br>
