@@ -29,7 +29,7 @@
                 <div class="col-sm-2" style="text-align: center">
                     <br>
                     <img src="img/cuadro.png" alt="Logo" style="width: 100px; height: 100px"><br><br>
-                    <a href="index.jsp">Inicio</a><br>
+                    <a href="actualizarInicio.do">Inicio</a><br>
                     <a href="Busqueda.jsp">Ver Pedidos</a><br>
                     <a href="#aiiuuudaaa">Ayuda</a><br>
                 </div>
@@ -99,19 +99,16 @@
                     </table>
                     <hr>
                     <p>Seleccione carretera, indique la cantidad y agregue al pedido:</p>
-                    <form action="obtenerCarretera.do" method="POST">
-                        <div class="dropdown">
-                            <input class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" value="Carreteras" id="btn" style="width: 500px; text-align: left;">
-                            <ul class="dropdown-menu">
-                              <li><a href="#" onclick="selectACT('Ruta 68')">Ruta 68</a></li>
-                              <li><a href="#" onclick="selectACT('Ruta Del Sol')">Ruta Del Sol</a></li>
-                              <li><a href="#" onclick="selectACT('Ruta Guardia Vieja')">Ruta Guardia Vieja</a></li>
-                              <li><a href="#" onclick="selectACT('Troncal Sur')">Troncal Sur</a></li>
-                            </ul>
-                            <button type="submit" class="btn btn-info">Agregar</button>
-                            <input type="text" id="txtnom" name="nombreCarretera" style="width: 1px; visibility: hidden">
-                        </div><br>
-                    </form>
+                    <div class="dropdown">
+                        <input class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" value="Carreteras" id="btn" style="width: 500px; text-align: left;">
+                        <ul class="dropdown-menu">
+                          <li><a href="obtenerCarretera.do?nombreCarretera=Ruta 68">Ruta 68</a></li>
+                          <li><a href="obtenerCarretera.do?nombreCarretera=Ruta Del Sol">Ruta Del Sol</a></li>
+                          <li><a href="obtenerCarretera.do?nombreCarretera=Ruta Guardia Vieja">Ruta Guardia Vieja</a></li>
+                          <li><a href="obtenerCarretera.do?nombreCarretera=Troncal Sur">Troncal Sur</a></li>
+                        </ul>
+                        <button type="submit" class="btn btn-info">Agregar</button>
+                    </div><br>
                 </div>
                 <div class="col-sm-2" style="text-align: center">
                     <br>

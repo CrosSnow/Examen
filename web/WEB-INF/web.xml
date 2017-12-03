@@ -12,6 +12,10 @@
         <servlet-name>efectuarCompraServlet</servlet-name>
         <servlet-class>Servlet.efectuarCompraServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>actualizarInicioServlet</servlet-name>
+        <servlet-class>Servlet.actualizarInicioServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>obtenerCarreterasServlet</servlet-name>
         <url-pattern>/obtenerCarretera.do</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>efectuarCompraServlet</servlet-name>
         <url-pattern>/efectuarCompra.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>actualizarInicioServlet</servlet-name>
+        <url-pattern>/actualizarInicio.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
