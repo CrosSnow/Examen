@@ -159,7 +159,7 @@
                             <tr>
                                 <td>${item.getNombreCarretera()}</td>
                                 <td> <input type="number" value="1" style="width: 50px; float: right" name="cantidad${item.getIdCarretera()}" id="${item.getIdCarretera()}"> </td>
-                                <td> <a href="#"> [-] </a> <input type="number" value="${item.getPrecioPeaje()}">  </td>
+                                <td> <a href="eliminarDeLaLista.do?codigo=${item.getIdCarretera()}"> [-] </a></td>
                             </tr>
                         </c:forEach>
                             </tbody>

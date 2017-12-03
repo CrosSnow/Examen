@@ -16,6 +16,10 @@
         <servlet-name>actualizarInicioServlet</servlet-name>
         <servlet-class>Servlet.actualizarInicioServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>eliminarDeLaListaServlet</servlet-name>
+        <servlet-class>eliminarDeLaListaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>obtenerCarreterasServlet</servlet-name>
         <url-pattern>/obtenerCarretera.do</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>actualizarInicioServlet</servlet-name>
         <url-pattern>/actualizarInicio.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>eliminarDeLaListaServlet</servlet-name>
+        <url-pattern>/eliminarDeLaLista.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
