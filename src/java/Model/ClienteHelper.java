@@ -23,34 +23,36 @@ public class ClienteHelper {
         sesion=NewHibernateUtil.getSessionFactory().getCurrentSession();
     }
     
-//    public List<Cliente> getAll(){
-//        List<Cliente> lista = null;
-//        try {
-//            org.hibernate.Transaction tx = sesion.beginTransaction();
-//            tx.setTimeout(5);
-//            Query q = sesion.createQuery("from cliente");
-//            lista = q.list();
-//            tx.commit();
-//            Logger.getLogger(ClienteHelper.class.getName()).log(Level.INFO, "Usando metodo getAll");
-//            Logger.getLogger(ClienteHelper.class.getName()).log(Level.INFO, "Se a obtenido todos los clientes exitosamente");
-//        } catch (Exception e) {
-//            Logger.getLogger(ClienteHelper.class.getName()).log(Level.SEVERE, "No se pudo obtener los clientes de la BD:{0}", e.toString());
-//            return lista;
-//        }
-//    }
-//    
-//    public boolean AgregarCliente(Cliente newClient){
-//        try {
-//            org.hibernate.Transaction tx = sesion.beginTransaction();
-//            tx.setTimeout(5);
-//            Integer id = (Integer)sesion.save(newClient);
-//            tx.commit();
-//            Logger.getLogger(ClienteHelper.class.getName()).log(Level.INFO, "Usando metodo AgregarCliente");
-//            Logger.getLogger(ClienteHelper.class.getName()).log(Level.INFO, "Se a agregado el cliente {0} exitosamente", newClient.getNombres());
-//        } catch (Exception e) {
-//            Logger.getLogger(ClienteHelper.class.getName()).log(Level.SEVERE, "No se pudo agregar cliente a la BD:{0}", e.toString());
-//            return false;
-//        }
-//    }
+    public List<Cliente> getAll(){
+        List<Cliente> lista = null;
+        try {
+            org.hibernate.Transaction tx = sesion.beginTransaction();
+            tx.setTimeout(5);
+            Query q = sesion.createQuery("from cliente");
+            lista = q.list();
+            tx.commit();
+            Logger.getLogger(ClienteHelper.class.getName()).log(Level.INFO, "Usando metodo getAll");
+            Logger.getLogger(ClienteHelper.class.getName()).log(Level.INFO, "Se a obtenido todos los clientes exitosamente");
+            return lista;
+        } catch (Exception e) {
+            Logger.getLogger(ClienteHelper.class.getName()).log(Level.SEVERE, "No se pudo obtener los clientes de la BD:{0}", e.toString());
+            return lista;
+        }
+    }
+    
+    public boolean AgregarCliente(Cliente newClient){
+        try {
+            org.hibernate.Transaction tx = sesion.beginTransaction();
+            tx.setTimeout(5);
+            Integer id = (Integer)sesion.save(newClient);
+            tx.commit();
+            Logger.getLogger(ClienteHelper.class.getName()).log(Level.INFO, "Usando metodo AgregarCliente");
+            Logger.getLogger(ClienteHelper.class.getName()).log(Level.INFO, "Se a agregado el cliente {0} exitosamente", newClient.getNombreEmpresa());
+            return id!=0;
+        } catch (Exception e) {
+            Logger.getLogger(ClienteHelper.class.getName()).log(Level.SEVERE, "No se pudo agregar cliente a la BD:{0}", e.toString());
+            return false;
+        }
+    }
     
 }
