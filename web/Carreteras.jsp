@@ -24,7 +24,17 @@
                     <a href="#aiiuuudaaa">Ayuda</a><br>
                 </div>
                 <div class="col-lg-8">
-                    <br>
+                    <h1>Buscar Carreteras</h1><br>
+                    <div id="googleMap" style="width:800px;height:400px;background:gainsboro"></div>
+                    <script>
+                        function myMap() {
+                            var mapProp= {
+                                center:new google.maps.LatLng(51.508742,-0.120850), zoom:5
+                            };
+                            var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+                            }
+                    </script>
+                    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
                 </div>
                 <div class="col-sm-2" style="text-align: center">
                     <br>
