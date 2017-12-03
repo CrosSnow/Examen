@@ -34,7 +34,7 @@
                             var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
                             }
                     </script>
-                    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5LgGM-rTUbyB7lGeNlptf5Fte8Zjk_74&callback=myMap"></script>
                 </div>
                 <div class="col-sm-2" style="text-align: center">
                     <br>
