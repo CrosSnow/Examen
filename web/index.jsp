@@ -116,7 +116,6 @@
                           <li><a href="obtenerCarretera.do?nombreCarretera=Ruta Guardia Vieja">Ruta Guardia Vieja</a></li>
                           <li><a href="obtenerCarretera.do?nombreCarretera=Troncal Sur">Troncal Sur</a></li>
                         </ul>
-                        <button type="submit" class="btn btn-info">Agregar</button>
                     </div><br>
                 </div>
                 <div class="col-sm-2" style="text-align: center">
@@ -132,7 +131,7 @@
                     <div class="container">
                         <p><strong>Opciones de pago:</strong></p>                        
                         <div class="radio">
-                            <label><input type="radio" name="optPago" id="optPago_1" value="transferencia">Transferencia</label>
+                            <label><input type="radio" name="optPago" id="optPago_1" value="transferencia" checked>Transferencia</label>
                         </div>
                         <div class="radio">
                             <label><input type="radio" name="optPago" id="optPago_2" value="pagoLinea">Pago en Linea</label>
@@ -145,7 +144,7 @@
                     <div class="container">
                         <p><strong>Opciones de Retiro:</strong></p>
                         <div class="radio">
-                            <label><input type="radio" name="optRetiro" id="optRetiro_1" value="oficina">Oficina</label>
+                            <label><input type="radio" name="optRetiro" id="optRetiro_1" value="oficina" checked>Oficina</label>
                         </div>
                         <div class="radio">
                             <label><input type="radio" name="optRetiro" id="optRetiro_2" value="envioCliente">Envio Cliente</label>
@@ -153,7 +152,7 @@
                     </div>
                     <br><br><br>
                 </div>
-                <div class="col-sm-7 panel panel-info">
+                <div class="col-sm-7">
                     <c:if test="${not empty listaCarreteras}">
                         <table class="table table-bordered table-striped table-hover">
                             <thead>
@@ -177,7 +176,7 @@
                         </table>
                     </c:if>
                 </div>          
-                <div class="col-sm-7 panel panel-info">
+                <div class="col-sm-7">
                     <div class="container">
                         <strong>Total a Pagar: </strong><p id="totalID"></p><br>
                         <button type="submit" class="btn btn-info">Hacer Pedido</button>
