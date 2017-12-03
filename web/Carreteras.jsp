@@ -19,9 +19,11 @@
                 <div class="col-sm-2" style="text-align: center">
                     <br>
                     <img src="img/cuadro.png" alt="Logo" style="width: 100px; height: 100px"><br><br>
-                    <a href="index.jsp">Inicio</a><br>
-                    <a href="Busqueda.jsp">Ver Pedidos</a><br>
-                    <a href="#aiiuuudaaa">Ayuda</a><br>
+                    <div class="btn-group-vertical">
+                        <a href="index.jsp" class="btn btn-success">Inicio</a>
+                        <a href="Busqueda.jsp" class="btn btn-success">Ver Pedidos</a>
+                        <a href="#aiiuuudaaa" class="btn btn-success">Ayuda</a>
+                    </div>                    
                 </div>
                 <div class="col-sm-8">
                     <h1>Buscar Carreteras</h1><br>
@@ -62,12 +64,13 @@
                 </div>
                 <div class="col-sm-2" style="text-align: center">
                     <br>
-                    <a href="Carreteras.jsp">Ver Carreteras</a><br><br><br>
-                    <a href="#" onclick="Ruta68()">Ruta 68</a><br>
-                    <a href="#" onclick="AutopistaDelSol()">Autopista del Sol</a><br>
-                    <a href="#" onclick="Ruta5()">Ruta 5</a><br>
-                    <a href="#" onclick="AutopistaLosLibertadores()">Autopista los Libertadores</a>
-                    
+                    <a href="Carreteras.jsp" class="btn btn-success">Ver Carreteras</a><br><br><br>
+                    <div class="btn-group-vertical">
+                        <a href="#" onclick="Ruta68()" class="btn" style="background-color: #dc3545; color: white">Ruta 68</a>
+                        <a href="#" onclick="AutopistaDelSol()" class="btn" style="background-color: #dc3545; color: white">Autopista del Sol</a>
+                        <a href="#" onclick="Ruta5()" class="btn" style="background-color: #dc3545; color: white">Ruta 5</a>
+                        <a href="#" onclick="AutopistaLosLibertadores()" class="btn" style="background-color: #dc3545; color: white">Autopista los Libertadores</a>
+                    </div> 
                 </div>
             </div>
         </div>

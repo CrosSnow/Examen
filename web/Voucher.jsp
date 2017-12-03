@@ -19,9 +19,11 @@
                 <div class="col-sm-2" style="text-align: center">
                     <br>
                     <img src="img/cuadro.png" alt="Logo" style="width: 100px; height: 100px"><br><br>
-                    <a href="index.jsp">Inicio</a><br>
-                    <a href="Busqueda.jsp">Ver Pedidos</a><br>
-                    <a href="#aiiuuudaaa">Ayuda</a><br>
+                    <div class="btn-group-vertical">
+                        <a href="index.jsp" class="btn btn-success">Inicio</a>
+                        <a href="Busqueda.jsp" class="btn btn-success">Ver Pedidos</a>
+                        <a href="#aiiuuudaaa" class="btn btn-success">Ayuda</a>
+                    </div>           
                 </div>
                 <br>
                 <div class="col-lg-8">
@@ -50,7 +52,7 @@
                     
                 </div>
                 <div class="col-sm-2" style="text-align: center">
-                    <a href="Carreteras.jsp">Ver Carreteras</a>
+                    <a href="Carreteras.jsp" class="btn btn-success">Ver Carreteras</a>
                 </div>
             </div>
         </div>
