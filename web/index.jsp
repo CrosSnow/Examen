@@ -130,7 +130,7 @@
             <div class="container-fluid">
                 <div class="col-sm-2">
                     <div class="container">
-                        <p>Opciones de pago: </p>
+                        <p><strong>Opciones de pago:</strong></p>                        
                         <div class="radio">
                             <label><input type="radio" name="optPago" id="optPago_1" value="transferencia">Transferencia</label>
                         </div>
@@ -143,7 +143,7 @@
                     </div>
                     <br>
                     <div class="container">
-                        <p>Opciones de Retiro: </p>
+                        <p><strong>Opciones de Retiro:</strong></p>
                         <div class="radio">
                             <label><input type="radio" name="optRetiro" id="optRetiro_1" value="oficina">Oficina</label>
                         </div>

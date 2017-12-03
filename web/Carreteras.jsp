@@ -26,7 +26,7 @@
                     </div>                    
                 </div>
                 <div class="col-sm-8">
-                    <h1>Buscar Carreteras</h1><br>
+                    <div style="text-align: center"><h3 class="alert alert-success">Buscar Carreteras</h3></div>                  
                     <div id="googleMap" style="width:880px;height:460px;background:gainsboro"></div>
                     <script>
                         function myMap() {
@@ -64,7 +64,7 @@
                 </div>
                 <div class="col-sm-2" style="text-align: center">
                     <br>
-                    <a href="Carreteras.jsp" class="btn btn-success">Ver Carreteras</a><br><br><br>
+                    <a href="Carreteras.jsp" class="btn btn-success">Ver Carreteras</a><br><br><br><br>
                     <div class="btn-group-vertical">
                         <a href="#" onclick="Ruta68()" class="btn" style="background-color: #dc3545; color: white">Ruta 68</a>
                         <a href="#" onclick="AutopistaDelSol()" class="btn" style="background-color: #dc3545; color: white">Autopista del Sol</a>
