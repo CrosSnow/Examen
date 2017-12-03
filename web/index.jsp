@@ -34,8 +34,9 @@
                     <a href="#aiiuuudaaa">Ayuda</a><br>
                 </div>
                 <div class="col-sm-8 panel panel-group panel-info" style="background-color: white">
-                    <h4>Datos Empresa</h4>
-                    
+                    <div style="text-align: center">
+                        <h4>Datos Empresa</h4>
+                    </div>
                     <table class="tableC table-condensed">
                         <thead>
                             <tr>
