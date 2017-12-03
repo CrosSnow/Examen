@@ -28,7 +28,7 @@ public class ClienteHelper {
         try {
             org.hibernate.Transaction tx = sesion.beginTransaction();
             tx.setTimeout(5);
-            Query q = sesion.createQuery("from cliente");
+            Query q = sesion.createQuery("from Cliente");
             lista = q.list();
             tx.commit();
             Logger.getLogger(ClienteHelper.class.getName()).log(Level.INFO, "Usando metodo getAll");
