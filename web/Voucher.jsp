@@ -26,8 +26,7 @@
                 <br>
                 <div class="col-lg-8">
                     <br>
-                    <h4>Pedido Número:</h4>
-                    <br>
+                    <h4>Pedido Número:</h4><br>
                     <table class="table table-bordered table-striped table-hover">
                         <thead>
                             <tr class="alert-success">
@@ -41,11 +40,10 @@
                                 <td>20</td>
                             </tr>
                         </tbody>
-                    </table>
-                    <br>
-                    <h3>Total a pagar:</h3>
-                    <br>
-                    <h4>Opción de envío</h4>
+                    </table><br>
+                    <h3>Total a pagar:</h3><br>
+                    <h5>Opción de envío</h5><br><br>
+                    <h6>Muchas gacias por preferirnos</h6>
                 </div>
                 <div class="col-sm-2" style="text-align: center">
                     <br>
