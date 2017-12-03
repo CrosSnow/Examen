@@ -20,6 +20,12 @@
                 document.getElementById('btn').value=nombre;
                 document.getElementById('txtnom').value=nombre;
             }
+            
+            function calcular(){
+                var total = 0;
+                total = document.getElementById('R68').value * document.getElementById('tR68').value;
+                document.getElementById('totalID').innerHTML = '$'total;
+            }
         </script>
     </head>
     <body>
@@ -158,8 +164,11 @@
                         <c:forEach var="item" items="${listaCarreteras}">
                             <tr>
                                 <td>${item.getNombreCarretera()}</td>
-                                <td> <input type="number" value="1" style="width: 50px; float: right" name="cantidad${item.getIdCarretera()}" id="${item.getIdCarretera()}"> </td>
-                                <td> <a href="eliminarDeLaLista.do?codigo=${item.getIdCarretera()}"> [-] </a></td>
+                                <td> <input type="number" value="1" style="width: 50px; float: right" name="cantidad${item.getIdCarretera()}" id="${item.getIdCarretera()}" onchange="calcular()"> </td>
+                                <td> 
+                                    <a href="eliminarDeLaLista.do?codigo=${item.getIdCarretera()}"> [-] </a> 
+                                    <input type="text" id="t${item.getIdCarretera()}" value="${item.getPrecioPeaje()}"> 
+                                </td>
                             </tr>
                         </c:forEach>
                             </tbody>
@@ -168,7 +177,7 @@
                 </div>          
                 <div class="col-sm-7 panel panel-info">
                     <div class="container">
-                        <strong>Total a Pagar: </strong><a href="calcularTotal.do&lista=${listaCarreteras}">${total}</a>
+                        <strong>Total a Pagar: </strong><p id="totalID"></p><br>
                         <button type="submit" class="btn btn-info">Hacer Pedido</button>
                     </div>
                 </div>               
