@@ -25,7 +25,7 @@
                 </div>
                 <br>
                 <div class="col-lg-8">
-                    <br>
+                    <br><br><br>
                     <h4>Pedido Número:</h4><br>
                     <table class="table table-bordered table-striped table-hover">
                         <thead>
@@ -42,11 +42,14 @@
                         </tbody>
                     </table><br>
                     <h3>Total a pagar:</h3><br>
-                    <h5>Opción de envío</h5><br><br>
-                    <h6>Muchas gacias por preferirnos</h6>
+                    <h5>Opción de envío:</h5><br><br>
+                    <div style="text-align: center">
+                        <br>
+                        <h6>Muchas gacias por preferirnos</h6>
+                    </div>
+                    
                 </div>
                 <div class="col-sm-2" style="text-align: center">
-                    <br>
                     <a href="Carreteras.jsp">Ver Carreteras</a>
                 </div>
             </div>
