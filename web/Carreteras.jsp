@@ -23,9 +23,9 @@
                     <a href="Busqueda.jsp">Ver Pedidos</a><br>
                     <a href="#aiiuuudaaa">Ayuda</a><br>
                 </div>
-                <div class="col-lg-8">
+                <div class="col-sm-8">
                     <h1>Buscar Carreteras</h1><br>
-                    <div id="googleMap" style="width:800px;height:400px;background:gainsboro"></div>
+                    <div id="googleMap" style="width:880px;height:460px;background:gainsboro"></div>
                     <script>
                         function myMap() {
                             var mapProp= {
