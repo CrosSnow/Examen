@@ -20,7 +20,7 @@
                     <br>
                     <img src="img/cuadro.png" alt="Logo" style="width: 100px; height: 100px"><br><br>
                     <div class="btn-group-vertical">
-                        <a href="index.jsp" class="btn btn-success">Inicio</a>
+                        <a href="actualizarInicio.do" class="btn btn-success">Inicio</a>
                         <a href="Busqueda.jsp" class="btn btn-success">Ver Pedidos</a>
                         <a href="#aiiuuudaaa" class="btn btn-success">Ayuda</a>
                     </div>           
