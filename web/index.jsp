@@ -21,17 +21,23 @@
                 document.getElementById('txtnom').value=nombre;
             }
             
-            function calcular(cantidad, precio){
+            function calcular(cantidad, precio, cbuffer){
                 var total = 0;
                 var NumPrecio = parseInt(document.getElementById(precio).value);
+                var Buffer = parseInt(document.getElementById(cbuffer).value);
                 var NumCantidad = parseInt(document.getElementById(cantidad).value);
                 var NumTotal = parseInt(document.getElementById('totalID').value)
                 if (NumTotal===0) {
                     total = NumPrecio;
                 }else{
-                    total = NumPrecio+NumTotal;
+                    if (Buffer<NumCantidad) {
+                        total = NumPrecio+NumTotal;
+                    }else{
+                        total = NumTotal - NumPrecio;
+                    }
                 }
                 document.getElementById('totalID').value=total;
+                document.getElementById(cbuffer).value=NumCantidad;
             }
         </script>
     </head>
@@ -172,11 +178,11 @@
                         <c:forEach var="item" items="${listaCarreteras}">
                             <tr>
                                 <td>${item.getNombreCarretera()}</td>
-                                <td> <input type="number" value="0" style="width: 50px; float: right" name="cantidad${item.getIdCarretera()}" id="${item.getIdCarretera()}" onchange="calcular('${item.getIdCarretera()}', 't${item.getIdCarretera()}')" contenteditable="false"> </td>
+                                <td> <input type="number" value="0" style="width: 50px; float: right" name="cantidad${item.getIdCarretera()}" id="${item.getIdCarretera()}" onchange="calcular('${item.getIdCarretera()}', 't${item.getIdCarretera()}', 'c${item.getIdCarretera()}')" contenteditable="false"> </td>
                                 <td> 
                                     <a href="eliminarDeLaLista.do?codigo=${item.getIdCarretera()}"> [ - ] </a> 
                                     <input type="text" id="t${item.getIdCarretera()}" value="${item.getPrecioPeaje()}" disabled="">
-                                    <input type="text" id="c${item.getIdCarretera()}">
+                                    <input type="text" id="c${item.getIdCarretera()}" value="0">
                                 </td>
                             </tr>
                         </c:forEach>
