@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>obtenerCarreterasServlet</servlet-name>
+        <servlet-class>Servlet.obtenerCarreterasServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>calcularTotalServlet</servlet-name>
+        <servlet-class>Servlet.calcularTotalServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>efectuarCompraServlet</servlet-name>
+        <servlet-class>Servlet.efectuarCompraServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>obtenerCarreterasServlet</servlet-name>
+        <url-pattern>/obtenerCarretera.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>calcularTotalServlet</servlet-name>
+        <url-pattern>/calcularTotal.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>efectuarCompraServlet</servlet-name>
+        <url-pattern>/efectuarCompra.do</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

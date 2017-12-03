@@ -16,8 +16,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script>
-            function cambiarSelect(opcion){
-                document.getElementById("btn").value="opcion";
+            function selectACT(nombre){
+                document.getElementById('btn').value=nombre;
+                document.getElementById('txtnom').value=nombre;
             }
         </script>
     </head>
@@ -48,7 +49,12 @@
                                     Rut:
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" style="width: 300px; height: 25px">
+                                    <c:if test="${not empty rut}">
+                                        <input type="text" class="form-control" style="width: 300px; height: 25px" value="${rut}">
+                                    </c:if>
+                                    <c:if test="${empty rut}">
+                                        <input type="text" class="form-control" style="width: 300px; height: 25px">
+                                    </c:if>
                                 </td>
                             </tr>
                             <tr>
@@ -56,7 +62,12 @@
                                     Nombre:
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" style="width: 350px; height: 25px">
+                                    <c:if test="${not empty nombre}">
+                                        <input type="text" class="form-control" style="width: 350px; height: 25px" value="${nombre}">
+                                    </c:if>
+                                    <c:if test="${empty nombre}">
+                                        <input type="text" class="form-control" style="width: 350px; height: 25px">
+                                    </c:if>
                                 </td>
                             </tr>
                             <tr>
@@ -64,7 +75,12 @@
                                     Direcci&oacute;n:
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" style="width: 450px; height: 25px">
+                                    <c:if test="${not empty direccion}">
+                                        <input type="text" class="form-control" style="width: 450px; height: 25px" value="${direccion}">
+                                    </c:if>
+                                    <c:if test="${empty direccion}">
+                                        <input type="text" class="form-control" style="width: 450px; height: 25px">
+                                    </c:if>
                                 </td>
                             </tr>
                             <tr>
@@ -72,22 +88,30 @@
                                     Comprado por:
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" style="width: 400px; height: 25px">
+                                    <c:if test="${not empty comprador}">
+                                        <input type="text" class="form-control" style="width: 400px; height: 25px" value="${comprador}">
+                                    </c:if>
+                                    <c:if test="${empty comprador}">
+                                        <input type="text" class="form-control" style="width: 400px; height: 25px">
+                                    </c:if>
                                 </td>
                         </tbody>
                     </table>
                     <hr>
                     <p>Seleccione carretera, indique la cantidad y agregue al pedido:</p>
-                    <div class="dropdown">
-                        <input class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" value="Carreteras" id="btn" style="width: 500px; text-align: left;">
-                        <ul class="dropdown-menu">
-                          <li><a href="#" onclick="document.getElementById('btn').value='Ruta 68'">Ruta 68</a></li>
-                          <li><a href="#" onclick="document.getElementById('btn').value='Del Sol'">Del Sol</a></li>
-                          <li><a href="#" onclick="document.getElementById('btn').value='Guardia Vieja'">Guardia Vieja</a></li>
-                          <li><a href="#" onclick="document.getElementById('btn').value='Troncal Sur'">Troncal Sur</a></li>
-                        </ul>
-                        <button type="submit" class="btn btn-info">Agregar</button>
-                    </div><br>
+                    <form action="obtenerCarretera.do" method="POST">
+                        <div class="dropdown">
+                            <input class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" value="Carreteras" id="btn" style="width: 500px; text-align: left;">
+                            <ul class="dropdown-menu">
+                              <li><a href="#" onclick="selectACT('Ruta 68')">Ruta 68</a></li>
+                              <li><a href="#" onclick="selectACT('Ruta Del Sol')">Ruta Del Sol</a></li>
+                              <li><a href="#" onclick="selectACT('Ruta Guardia Vieja')">Ruta Guardia Vieja</a></li>
+                              <li><a href="#" onclick="selectACT('Troncal Sur')">Troncal Sur</a></li>
+                            </ul>
+                            <button type="submit" class="btn btn-info">Agregar</button>
+                            <input type="text" id="txtnom" name="nombreCarretera" style="width: 1px; visibility: hidden">
+                        </div><br>
+                    </form>
                 </div>
                 <div class="col-sm-2" style="text-align: center">
                     <br>
@@ -124,40 +148,29 @@
                     <br><br><br>
                 </div>
                 <div class="col-sm-7 panel panel-info">
-                    <table class="table table-bordered table-striped table-hover">
-                        <thead>
-                            <tr class="alert-success">
-                                <th>Carretera</th>
-                                <th>Cantidad</th>
+                    <c:if test="${not empty listaCarreteras}">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr class="alert-success">
+                                    <th>Carretera</th>
+                                    <th>Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                        <c:forEach var="item" items="${listaCarreteras}">
+                            <tr>
+                                <td>${item.getNombreCarretera()}</td>
+                                <td> <input type="number" value="1" style="width: 50px; float: right" name="cantidad${item.getIdCarretera()}" id="${item.getIdCarretera()}"> </td>
+                                <td> <a href="#"> [-] </a> <input type="number" value="${item.getPrecioPeaje()}">  </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <tr id="ruta68" style="visibility: hidden">
-                                <td>Ruta 68</td>
-                                <td> <input type="number" value="1"  style="width: 50px; float: right"> </td>
-                                <td> <a href="#"> [-] </a> </td>
-                            </tr>
-                            <tr id="rutaSol" style="visibility: hidden">
-                                <td>Ruta Del Sol</td>
-                                <td> <input type="number" value="1"  style="width: 50px; float: right"> </td>
-                                <td> <a href="#"> [-] </a> </td>
-                            </tr>
-                            <tr id="guardiaVieja" style="visibility: hidden">
-                                <td>Ruta Guardia Vieja</td>
-                                <td> <input type="number" value="1"  style="width: 50px; float: right"> </td>
-                                <td> <a href="#"> [-] </a> </td>
-                            </tr>
-                            <tr id="troncalSur" style="visibility: hidden">
-                                <td>Troncal Sur</td>
-                                <td> <input type="number" value="1"  style="width: 50px; float: right"> </td>
-                                <td> <a href="#"> [-] </a> </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>             
+                        </c:forEach>
+                            </tbody>
+                        </table>
+                    </c:if>
+                </div>          
                 <div class="col-sm-7 panel panel-info">
                     <div class="container">
-                        <strong>Total a Pagar: </strong>$1.500.000  
+                        <strong>Total a Pagar: </strong><a href="calcularTotal.do&lista=${listaCarreteras}">${total}</a>
                         <button type="submit" class="btn btn-info">Hacer Pedido</button>
                     </div>
                 </div>               
