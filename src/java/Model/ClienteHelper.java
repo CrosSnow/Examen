@@ -39,6 +39,18 @@ public class ClienteHelper {
         }
     }
     
-    
+    public boolean AgregarCliente(Cliente newClient){
+        try {
+            org.hibernate.Transaction tx = sesion.beginTransaction();
+            tx.setTimeout(5);
+            Integer id = (Integer)sesion.save(newClient);
+            tx.commit();
+            Logger.getLogger(ClienteHelper.class.getName()).log(Level.INFO, "Usando metodo AgregarCliente");
+            Logger.getLogger(ClienteHelper.class.getName()).log(Level.INFO, "Se a agregado el cliente {0} exitosamente", newClient.getNombres());
+        } catch (Exception e) {
+            Logger.getLogger(ClienteHelper.class.getName()).log(Level.SEVERE, "No se pudo agregar cliente a la BD:{0}", e.toString());
+            return false;
+        }
+    }
     
 }
