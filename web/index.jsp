@@ -21,10 +21,17 @@
                 document.getElementById('txtnom').value=nombre;
             }
             
-            function calcular(){
+            function calcular(cantidad, precio){
                 var total = 0;
-                total = document.getElementById('R68').value * document.getElementById('tR68').value;
-                document.getElementById('totalID').innerHTML = '$'total;
+                var NumPrecio = parseInt(document.getElementById(precio).value);
+                var NumCantidad = parseInt(document.getElementById(cantidad).value);
+                var NumTotal = parseInt(document.getElementById('totalID').value)
+                if (NumTotal===0) {
+                    total = NumPrecio;
+                }else{
+                    total = NumPrecio+NumTotal;
+                }
+                document.getElementById('totalID').value=total;
             }
         </script>
     </head>
@@ -165,10 +172,11 @@
                         <c:forEach var="item" items="${listaCarreteras}">
                             <tr>
                                 <td>${item.getNombreCarretera()}</td>
-                                <td> <input type="number" value="1" style="width: 50px; float: right" name="cantidad${item.getIdCarretera()}" id="${item.getIdCarretera()}" onchange="calcular()"> </td>
+                                <td> <input type="number" value="0" style="width: 50px; float: right" name="cantidad${item.getIdCarretera()}" id="${item.getIdCarretera()}" onchange="calcular('${item.getIdCarretera()}', 't${item.getIdCarretera()}')" contenteditable="false"> </td>
                                 <td> 
-                                    <a href="eliminarDeLaLista.do?codigo=${item.getIdCarretera()}"> [-] </a> 
-                                    <input type="text" id="t${item.getIdCarretera()}" value="${item.getPrecioPeaje()}"> 
+                                    <a href="eliminarDeLaLista.do?codigo=${item.getIdCarretera()}"> [ - ] </a> 
+                                    <input type="text" id="t${item.getIdCarretera()}" value="${item.getPrecioPeaje()}" disabled="">
+                                    <input type="text" id="c${item.getIdCarretera()}">
                                 </td>
                             </tr>
                         </c:forEach>
@@ -178,8 +186,8 @@
                 </div>          
                 <div class="col-sm-7">
                     <div class="container">
-                        <strong>Total a Pagar: </strong><p id="totalID"></p><br>
-                        <button type="submit" class="btn btn-info">Hacer Pedido</button>
+                        <strong>Total a Pagar: $</strong><input type="text" id="totalID" value="0">
+                        <button type="submit" class="btn btn-danger">Hacer Pedido</button>
                     </div>
                 </div>               
             </div>
