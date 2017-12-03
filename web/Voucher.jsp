@@ -43,9 +43,9 @@
                         </tbody>
                     </table>
                     <br>
-                    <h5>Total a pagar:</h5>
+                    <h3>Total a pagar:</h3>
                     <br>
-                    <h3>Opcion de envio</h3>
+                    <h4>Opción de envío</h4>
                 </div>
                 <div class="col-sm-2" style="text-align: center">
                     <br>
