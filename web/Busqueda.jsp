@@ -12,6 +12,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Buscar Pedidos</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
         <br>
@@ -28,7 +30,7 @@
                 </div>
                 <div class="col-lg-8">
                     <br><br><br>
-                        <div class="dropdown"><br><br><br>
+                        <div class="dropdown">
                             <input class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" value="Rut Cliente" style="width: 500px; text-align: left;">
                             <ul class="dropdown-menu">
                                 <c:forEach var="item" items="${listaCliente}">
@@ -38,6 +40,7 @@
                             <button type="submit" class="btn btn-info">Buscar</button>
                         </div>
                     <br><br><br>
+                    <c:if test="${not empty listaCompra}">
                     <table class="table table-bordered table-striped table-hover">
                         <thead>
                             <tr class="alert-success">
@@ -50,12 +53,13 @@
                             <c:forEach var="item" items="${listaCompra}">
                                 <tr>
                                     <td>${item.getPedido()}</td>
-                                    <td>${item.getTotal()}</td>
+                                    <td>$${item.getTotal()}</td>
                                     <td> <a href="#">[ + ]</a> </td>
                                 </tr>
                             </c:forEach>
                         </tbody>
                     </table><br>
+                    </c:if>
                 </div>
                 <div class="col-sm-2" style="text-align: center">
                     <br>

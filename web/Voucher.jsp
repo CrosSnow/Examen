@@ -46,7 +46,7 @@
                             </c:forEach>
                         </tbody>
                     </table><br>
-                    <h3>Total a pagar: ${total}</h3><br>
+                    <h3>Total a pagar: $${total}</h3><br>
                     <h5>Opción de envío: ${opcionEnvio}</h5><br><br>
                     <div style="text-align: center">
                         <br>

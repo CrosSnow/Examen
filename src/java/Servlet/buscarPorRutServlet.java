@@ -39,7 +39,7 @@ public class buscarPorRutServlet extends HttpServlet {
         int rut = Integer.parseInt(request.getParameter("rut"));
         String pedido = "";
         int total = 0;
-        List<PedidoCliente> listaCompra = null;
+        List<PedidoCliente> listaCompra = new ArrayList<>();
         List<Cliente> listaCliente = null;
         List<Compra> listaPedido = null;
         ClienteHelper cliHelp = new ClienteHelper();
@@ -59,24 +59,26 @@ public class buscarPorRutServlet extends HttpServlet {
         cont = 0;
         for (Compra item : listaPedido) {
             if (numPedido.get(cont)==item.getNumeroPedido()) {
-                pedido = pedido+item.getCarretera().getNombreCarretera()+"-";
+                pedido = pedido+item.getCarretera().getNombreCarretera()+" - ";
                 total = (item.getCantidad()*item.getPrecioUnitario())+total;
             }else{
-                PedidoCliente newPedido = new PedidoCliente(total, pedido);
+                String pedidoNuevo = pedido.substring(0, pedido.length()-4);
+                PedidoCliente newPedido = new PedidoCliente(total, pedidoNuevo);
                 listaCompra.add(newPedido);
                 cont++;
                 pedido = "";
                 total = 0;
-                pedido = pedido+item.getCarretera().getNombreCarretera()+"-";
+                pedido = pedido+item.getCarretera().getNombreCarretera()+" - ";
                 total = (item.getCantidad()*item.getPrecioUnitario())+total;
             }
         }
-        PedidoCliente newPedido = new PedidoCliente(total, pedido);
+        String pedidoNuevo = pedido.substring(0, pedido.length()-3);
+        PedidoCliente newPedido = new PedidoCliente(total, pedidoNuevo);
         listaCompra.add(newPedido);
         
         request.setAttribute("listaCompra", listaCompra);
         request.setAttribute("listaCliente", listaCliente);
-        request.getRequestDispatcher("busqueda.jsp").forward(request, response);
+        request.getRequestDispatcher("Busqueda.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
