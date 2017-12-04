@@ -12,6 +12,7 @@ import Model.Compra;
 import Model.CompraHelper;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -48,28 +49,22 @@ public class efectuarCompraServlet extends HttpServlet {
         List<Carretera> lista = (List<Carretera>)sesion.getAttribute("listaCarreteras");
         int[] cantidades = new int[lista.size()];
         String totalTXT = request.getParameter("total");
-        String mensaje = null;
+        List<String> mensajes = new ArrayList<>();
         
         if (nombreComprador.isEmpty()||
                 nombreEmpresa.isEmpty()||
                 rutTXT.isEmpty()||
                 direccion.isEmpty()) {
-            mensaje = "Los campos no pueden estar vacios";
-            request.setAttribute("mensaje", mensaje);
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            mensajes.add("Los campos no pueden estar vacios");
         }else{
             if (totalTXT.equals("0")) {
-                mensaje = "Debe colocar al menos, una cantidad";
-                request.setAttribute("mensaje", mensaje);
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                mensajes.add("Debe colocar al menos, una cantidad");
             }else{
                 int cont = 0;
                 for (Carretera item : lista) {
                     String cantidad = request.getParameter("cantidad"+item.getIdCarretera());
                     if (cantidad.equals("0")) {
-                        mensaje = "Falto agregar una cantidad en: "+item.getNombreCarretera();
-                        request.setAttribute("mensaje", mensaje);
-                        request.getRequestDispatcher("index.jsp").forward(request, response);
+                        mensajes.add("Falto agregar una cantidad en: "+item.getNombreCarretera());
                         break;
                     }
                     cantidades[cont] = Integer.parseInt(cantidad);
@@ -79,9 +74,7 @@ public class efectuarCompraServlet extends HttpServlet {
                 try {
                     rut = Integer.parseInt(rutTXT);
                 } catch (NumberFormatException e) {
-                    mensaje = "Rut debe ser un número";
-                    request.setAttribute("mensaje", mensaje);
-                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                    mensajes.add("Rut debe ser un número");
                 }
                 switch (opPago) {
                     case "transferencia":
@@ -126,9 +119,7 @@ public class efectuarCompraServlet extends HttpServlet {
                         request.setAttribute("opcionEnvio", opRetiro);
                         request.getRequestDispatcher("Voucher.jsp").forward(request, response);
                     }else{
-                        mensaje = "Error al agregar el cliente";
-                        request.setAttribute("mensaje", mensaje);
-                        request.getRequestDispatcher("index.jsp").forward(request, response);
+                        mensajes.add("Error al agregar el cliente");
                     }
                     }else{
                     cont = 0;
