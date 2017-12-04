@@ -20,6 +20,14 @@
         <servlet-name>eliminarDeLaListaServlet</servlet-name>
         <servlet-class>eliminarDeLaListaServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>busquedaServlet</servlet-name>
+        <servlet-class>Servlet.busquedaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>buscarPorRutServlet</servlet-name>
+        <servlet-class>Servlet.buscarPorRutServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>obtenerCarreterasServlet</servlet-name>
         <url-pattern>/obtenerCarretera.do</url-pattern>
@@ -39,6 +47,14 @@
     <servlet-mapping>
         <servlet-name>eliminarDeLaListaServlet</servlet-name>
         <url-pattern>/eliminarDeLaLista.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>busquedaServlet</servlet-name>
+        <url-pattern>/busqueda.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>buscarPorRutServlet</servlet-name>
+        <url-pattern>/buscarPorRut.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

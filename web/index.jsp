@@ -51,7 +51,7 @@
                         <img src="img/cuadro.png" alt="Logo" style="width: 100px; height: 100px"><br><br>
                         <div class="btn-group-vertical">
                             <a href="actualizarInicio.do" class="btn btn-success">Inicio</a>
-                            <a href="Busqueda.jsp" class="btn btn-success">Ver Pedidos</a>
+                            <a href="busqueda.do" class="btn btn-success">Ver Pedidos</a>
                             <a href="#aiiuuudaaa" class="btn btn-success">Ayuda</a>
                         </div>           
                     </div>
@@ -108,10 +108,10 @@
                         <div class="dropdown">
                             <input class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" value="Carreteras" id="btn" style="width: 500px; text-align: left;">
                             <ul class="dropdown-menu">
-                              <li><a href="obtenerCarretera.do?nombreCarretera=Ruta 68">Ruta 68</a></li>
-                              <li><a href="obtenerCarretera.do?nombreCarretera=Autopista Del Sol">Autopista Del Sol</a></li>
-                              <li><a href="obtenerCarretera.do?nombreCarretera=Autopista Los Libertadores">Autopista Los Libertadores</a></li>
-                              <li><a href="obtenerCarretera.do?nombreCarretera=Ruta 5">Ruta 5</a></li>
+                                <li><a href="obtenerCarretera.do?nombreCarretera=Ruta 68">Ruta 68</a></li>
+                                <li><a href="obtenerCarretera.do?nombreCarretera=Autopista Del Sol">Autopista Del Sol</a></li>
+                                <li><a href="obtenerCarretera.do?nombreCarretera=Autopista Los Libertadores">Autopista Los Libertadores</a></li>
+                                <li><a href="obtenerCarretera.do?nombreCarretera=Ruta 5">Ruta 5</a></li>
                             </ul>
                         </div><br>
                     </div>
