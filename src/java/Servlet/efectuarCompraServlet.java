@@ -106,11 +106,16 @@ public class efectuarCompraServlet extends HttpServlet {
                 ClienteHelper clientHelp = new ClienteHelper();
                 if (clientHelp.AgregarCliente(newCliente)) {
                     cont = 0;
+                    int numeroPedido = Math.round((float)Math.random()*1000);
                     for (Carretera item : lista) {
-                        Compra newCompra = new Compra(item, newCliente, cantidades[cont], item.getPrecioPeaje());
+                        Compra newCompra = new Compra(item, newCliente, numeroPedido, cantidades[cont], item.getPrecioPeaje());
                         CompraHelper comHelp = new CompraHelper();
                         comHelp.agregarCompra(newCompra);
                     }
+                    int total = Integer.parseInt(totalTXT);
+                    request.setAttribute("total", total);
+                    request.setAttribute("nroPedido", numeroPedido);
+                    request.getRequestDispatcher("Voucher.jsp").forward(request, response);
                 }
             }
         }

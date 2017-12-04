@@ -1,5 +1,5 @@
 package Model;
-// Generated 29-11-2017 13:44:13 by Hibernate Tools 4.3.1
+// Generated 03-12-2017 23:52:10 by Hibernate Tools 4.3.1
 
 
 
@@ -12,15 +12,17 @@ public class Compra  implements java.io.Serializable {
      private Integer idCompra;
      private Carretera carretera;
      private Cliente cliente;
+     private int numeroPedido;
      private int cantidad;
      private int precioUnitario;
 
     public Compra() {
     }
 
-    public Compra(Carretera carretera, Cliente cliente, int cantidad, int precioUnitario) {
+    public Compra(Carretera carretera, Cliente cliente, int numeroPedido, int cantidad, int precioUnitario) {
        this.carretera = carretera;
        this.cliente = cliente;
+       this.numeroPedido = numeroPedido;
        this.cantidad = cantidad;
        this.precioUnitario = precioUnitario;
     }
@@ -45,6 +47,13 @@ public class Compra  implements java.io.Serializable {
     
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+    public int getNumeroPedido() {
+        return this.numeroPedido;
+    }
+    
+    public void setNumeroPedido(int numeroPedido) {
+        this.numeroPedido = numeroPedido;
     }
     public int getCantidad() {
         return this.cantidad;
