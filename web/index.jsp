@@ -82,8 +82,7 @@
                                         Rut:
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" name="rut" id="rut" style="width: 300px; height: 28px" required onchange="noVacio('rut')">
-                                        <p id="errrut" style="visibility: hidden; color: red">*No debe estar vacio</p>
+                                        <input type="text" class="form-control" name="rut" maxlength="9" id="rut" style="width: 300px; height: 28px" required>
                                     </td>
                                 </tr>
                                 <tr>
@@ -91,8 +90,7 @@
                                         Nombre:
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" name="nombreEmpresa" id="nomEmp" style="width: 350px; height: 28px" required onchange="noVacio('nomEmp')">
-                                        <p id="errnomEmp" style="visibility: hidden; color: red">*No debe estar vacio</p>
+                                        <input type="text" class="form-control" name="nombreEmpresa" maxlength="30" id="nomEmp" style="width: 350px; height: 28px" required>
                                     </td>
                                 </tr>
                                 <tr>
@@ -100,8 +98,7 @@
                                         Direcci&oacute;n:
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" name="direccion" id="dir" style="width: 450px; height: 28px" required onchange="noVacio('dir')">
-                                        <p id="errdir" style="visibility: hidden; color: red">*No debe estar vacio</p>
+                                        <input type="text" class="form-control" name="direccion" maxlength="50" id="dir" style="width: 450px; height: 28px" required>
                                     </td>
                                 </tr>
                                 <tr>
@@ -109,8 +106,7 @@
                                         Comprado por:
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" name="nombreComprador" id="nomCom" style="width: 400px; height: 28px" required onchange="noVacio('nomCom')">
-                                        <p id="errnomCom" style="visibility: hidden; color: red">*No debe estar vacio</p>
+                                        <input type="text" class="form-control" name="nombreComprador" id="nomCom" maxlength="30" style="width: 400px; height: 28px" required>
                                     </td>
                             </tbody>
                         </table>
