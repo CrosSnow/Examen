@@ -56,6 +56,7 @@
                         </div>           
                     </div>
                     <div class="col-sm-8 panel panel-group panel-info" style="background-color: white">
+                        <br>
                         <c:if test="${not empty mensajes}">
                             <ul class="alert alert-danger">
                                 <c:forEach var="item" items="${mensajes}">

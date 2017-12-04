@@ -56,88 +56,93 @@ public class efectuarCompraServlet extends HttpServlet {
                 rutTXT.isEmpty()||
                 direccion.isEmpty()) {
             mensajes.add("Los campos no pueden estar vacios");
+        }
+        int cont = 0;
+        if (!lista.isEmpty()) {
+            for (Carretera item : lista) {
+                String cantidad = request.getParameter("cantidad"+item.getIdCarretera());
+                if (cantidad.equals("0")) {
+                    mensajes.add("Falto agregar una cantidad en: "+item.getNombreCarretera());
+                }
+                cantidades[cont] = Integer.parseInt(cantidad);
+                cont++;
+            }
         }else{
-            if (totalTXT.equals("0")) {
-                mensajes.add("Debe colocar al menos, una cantidad");
-            }else{
-                int cont = 0;
+            mensajes.add("Debe seleccionar al menos una carretera");
+        }
+        int rut = 0, opP, opR;
+        try {
+            rut = Integer.parseInt(rutTXT);
+        } catch (NumberFormatException e) {
+            mensajes.add("Rut debe ser un número");
+        }
+        switch (opPago) {
+            case "transferencia":
+                opP=1;
+                break;
+            case "pagoLinea":
+                opP = 2;
+                break;
+            default:
+                opP = 3;
+                break;
+        }
+        switch (opRetiro) {
+            case "oficina":
+                opR=1;
+                break;
+            default:
+                opR = 2;
+                break;
+        }
+
+        ClienteHelper clientHelp = new ClienteHelper();
+        Cliente oldCliente = clientHelp.getClientePorRut(rut);
+        if (oldCliente==null) {
+            if (mensajes.isEmpty()) {
+                Cliente newCliente = new Cliente(rut, nombreEmpresa, direccion);
+                ClienteHelper clientHelpAux = new ClienteHelper();
+                clientHelpAux.AgregarCliente(newCliente);
+                cont = 0;
+                int numeroPedido = Math.round((float)Math.random()*10000);
                 for (Carretera item : lista) {
-                    String cantidad = request.getParameter("cantidad"+item.getIdCarretera());
-                    if (cantidad.equals("0")) {
-                        mensajes.add("Falto agregar una cantidad en: "+item.getNombreCarretera());
-                        break;
-                    }
-                    cantidades[cont] = Integer.parseInt(cantidad);
+                    Compra newCompra = new Compra(item, newCliente, numeroPedido, cantidades[cont], item.getPrecioPeaje(), nombreComprador, opP, opR);
+                    CompraHelper comHelp = new CompraHelper();
+                    comHelp.agregarCompra(newCompra);
                     cont++;
                 }
-                int rut = 0, opP, opR;
-                try {
-                    rut = Integer.parseInt(rutTXT);
-                } catch (NumberFormatException e) {
-                    mensajes.add("Rut debe ser un número");
-                }
-                switch (opPago) {
-                    case "transferencia":
-                        opP=1;
-                        break;
-                    case "pagoLinea":
-                        opP = 2;
-                        break;
-                    default:
-                        opP = 3;
-                        break;
-                }
-                switch (opRetiro) {
-                    case "oficina":
-                        opR=1;
-                        break;
-                    default:
-                        opR = 2;
-                        break;
-                }
-                
-                ClienteHelper clientHelp = new ClienteHelper();
-                Cliente oldCliente = clientHelp.getClientePorRut(rut);
-                if (oldCliente==null) {
-                    Cliente newCliente = new Cliente(rut, nombreEmpresa, direccion);
-                    ClienteHelper clientHelpAux = new ClienteHelper();
-                    if (clientHelpAux.AgregarCliente(newCliente)) {
-                        cont = 0;
-                        int numeroPedido = Math.round((float)Math.random()*10000);
-                        for (Carretera item : lista) {
-                            Compra newCompra = new Compra(item, newCliente, numeroPedido, cantidades[cont], item.getPrecioPeaje(), nombreComprador, opP, opR);
-                            CompraHelper comHelp = new CompraHelper();
-                            comHelp.agregarCompra(newCompra);
-                            cont++;
-                        }
-                        CompraHelper comHelp = new CompraHelper();
-                        List<Compra> listaCompra = comHelp.obtenerListaPorNumPedido(numeroPedido);
-                        int total = Integer.parseInt(totalTXT);
-                        request.setAttribute("total", total);
-                        request.setAttribute("nroPedido", numeroPedido);
-                        request.setAttribute("listaCompra", listaCompra);
-                        request.setAttribute("opcionEnvio", opRetiro);
-                        request.getRequestDispatcher("Voucher.jsp").forward(request, response);
-                    }else{
-                        mensajes.add("Error al agregar el cliente");
-                    }
-                    }else{
-                    cont = 0;
-                    int numeroPedido = Math.round((float)Math.random()*10000);
-                    for (Carretera item : lista) {
-                        Compra newCompra = new Compra(item, oldCliente, numeroPedido, cantidades[cont], item.getPrecioPeaje(), nombreComprador, opP, opR);
-                        CompraHelper comHelp = new CompraHelper();
-                        comHelp.agregarCompra(newCompra);
-                    }
+                CompraHelper comHelp = new CompraHelper();
+                List<Compra> listaCompra = comHelp.obtenerListaPorNumPedido(numeroPedido);
+                int total = Integer.parseInt(totalTXT);
+                request.setAttribute("total", total);
+                request.setAttribute("nroPedido", numeroPedido);
+                request.setAttribute("listaCompra", listaCompra);
+                request.setAttribute("opcionEnvio", opRetiro);
+                request.getRequestDispatcher("Voucher.jsp").forward(request, response);
+            }else{
+                request.setAttribute("mensajes", mensajes);
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }
+        }else{
+            if (mensajes.isEmpty()) {
+                cont = 0;
+                int numeroPedido = Math.round((float)Math.random()*10000);
+                for (Carretera item : lista) {
+                    Compra newCompra = new Compra(item, oldCliente, numeroPedido, cantidades[cont], item.getPrecioPeaje(), nombreComprador, opP, opR);
                     CompraHelper comHelp = new CompraHelper();
-                    List<Compra> listaCompra = comHelp.obtenerListaPorNumPedido(numeroPedido);
-                    int total = Integer.parseInt(totalTXT);
-                    request.setAttribute("total", total);
-                    request.setAttribute("nroPedido", numeroPedido);
-                    request.setAttribute("listaCompra", listaCompra);
-                    request.setAttribute("opcionEnvio", opRetiro);
-                    request.getRequestDispatcher("Voucher.jsp").forward(request, response);
+                    comHelp.agregarCompra(newCompra);
                 }
+                CompraHelper comHelp = new CompraHelper();
+                List<Compra> listaCompra = comHelp.obtenerListaPorNumPedido(numeroPedido);
+                int total = Integer.parseInt(totalTXT);
+                request.setAttribute("total", total);
+                request.setAttribute("nroPedido", numeroPedido);
+                request.setAttribute("listaCompra", listaCompra);
+                request.setAttribute("opcionEnvio", opRetiro);
+                request.getRequestDispatcher("Voucher.jsp").forward(request, response);
+            }else{
+                request.setAttribute("mensajes", mensajes);
+                request.getRequestDispatcher("index.jsp").forward(request, response);
             }
         }
     }
