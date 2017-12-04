@@ -28,10 +28,9 @@
                 </div>
                 <div class="col-lg-8">
                     <br><br><br>
-                    <c:if test="${not empty listaCliente}">
                         <div class="dropdown"><br><br><br>
                             <input class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" value="Rut Cliente" style="width: 500px; text-align: left;">
-                            <ul class="dropdown-menu"><br><br><br>
+                            <ul class="dropdown-menu">
                                 <c:forEach var="item" items="${listaCliente}">
                                     <li> <a href="buscarPorRut.do?rut=${item.getRut()}">${item.getRut()}</a> </li>
                                 </c:forEach>
@@ -57,7 +56,6 @@
                             </c:forEach>
                         </tbody>
                     </table><br>
-                    </c:if>
                 </div>
                 <div class="col-sm-2" style="text-align: center">
                     <br>
