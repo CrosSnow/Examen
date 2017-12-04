@@ -31,9 +31,14 @@ public class efectuarCompraServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession sesion = request.getSession();
-        sesion.invalidate();
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        HttpSession sesion = request.getSession(false);
+        
+        String nombreEmpresa = request.getParameter("nombreEmpresa");
+        String rutTXT = request.getParameter("rut");
+        String nombreComprador = request.getParameter("nombreComprador");
+        String direccion = request.getParameter("direccion");
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
