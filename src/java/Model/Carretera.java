@@ -1,5 +1,5 @@
 package Model;
-// Generated 03-12-2017 23:52:10 by Hibernate Tools 4.3.1
+// Generated 04-12-2017 12:25:46 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;

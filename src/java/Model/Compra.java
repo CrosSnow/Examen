@@ -1,5 +1,5 @@
 package Model;
-// Generated 03-12-2017 23:52:10 by Hibernate Tools 4.3.1
+// Generated 04-12-2017 12:25:46 by Hibernate Tools 4.3.1
 
 
 
@@ -15,16 +15,22 @@ public class Compra  implements java.io.Serializable {
      private int numeroPedido;
      private int cantidad;
      private int precioUnitario;
+     private String nombreComprador;
+     private int opcionPago;
+     private int opcionRetiro;
 
     public Compra() {
     }
 
-    public Compra(Carretera carretera, Cliente cliente, int numeroPedido, int cantidad, int precioUnitario) {
+    public Compra(Carretera carretera, Cliente cliente, int numeroPedido, int cantidad, int precioUnitario, String nombreComprador, int opcionPago, int opcionRetiro) {
        this.carretera = carretera;
        this.cliente = cliente;
        this.numeroPedido = numeroPedido;
        this.cantidad = cantidad;
        this.precioUnitario = precioUnitario;
+       this.nombreComprador = nombreComprador;
+       this.opcionPago = opcionPago;
+       this.opcionRetiro = opcionRetiro;
     }
    
     public Integer getIdCompra() {
@@ -68,6 +74,27 @@ public class Compra  implements java.io.Serializable {
     
     public void setPrecioUnitario(int precioUnitario) {
         this.precioUnitario = precioUnitario;
+    }
+    public String getNombreComprador() {
+        return this.nombreComprador;
+    }
+    
+    public void setNombreComprador(String nombreComprador) {
+        this.nombreComprador = nombreComprador;
+    }
+    public int getOpcionPago() {
+        return this.opcionPago;
+    }
+    
+    public void setOpcionPago(int opcionPago) {
+        this.opcionPago = opcionPago;
+    }
+    public int getOpcionRetiro() {
+        return this.opcionRetiro;
+    }
+    
+    public void setOpcionRetiro(int opcionRetiro) {
+        this.opcionRetiro = opcionRetiro;
     }
 
 

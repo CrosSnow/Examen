@@ -1,5 +1,5 @@
 package Model;
-// Generated 03-12-2017 23:52:10 by Hibernate Tools 4.3.1
+// Generated 04-12-2017 12:25:46 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -14,30 +14,21 @@ public class Cliente  implements java.io.Serializable {
      private int rut;
      private String nombreEmpresa;
      private String direccionEmpresa;
-     private String nombreComprador;
-     private int opcionPago;
-     private int opcionRetiro;
      private Set compras = new HashSet(0);
 
     public Cliente() {
     }
 
 	
-    public Cliente(int rut, String nombreEmpresa, String direccionEmpresa, String nombreComprador, int opcionPago, int opcionRetiro) {
+    public Cliente(int rut, String nombreEmpresa, String direccionEmpresa) {
         this.rut = rut;
         this.nombreEmpresa = nombreEmpresa;
         this.direccionEmpresa = direccionEmpresa;
-        this.nombreComprador = nombreComprador;
-        this.opcionPago = opcionPago;
-        this.opcionRetiro = opcionRetiro;
     }
-    public Cliente(int rut, String nombreEmpresa, String direccionEmpresa, String nombreComprador, int opcionPago, int opcionRetiro, Set compras) {
+    public Cliente(int rut, String nombreEmpresa, String direccionEmpresa, Set compras) {
        this.rut = rut;
        this.nombreEmpresa = nombreEmpresa;
        this.direccionEmpresa = direccionEmpresa;
-       this.nombreComprador = nombreComprador;
-       this.opcionPago = opcionPago;
-       this.opcionRetiro = opcionRetiro;
        this.compras = compras;
     }
    
@@ -61,27 +52,6 @@ public class Cliente  implements java.io.Serializable {
     
     public void setDireccionEmpresa(String direccionEmpresa) {
         this.direccionEmpresa = direccionEmpresa;
-    }
-    public String getNombreComprador() {
-        return this.nombreComprador;
-    }
-    
-    public void setNombreComprador(String nombreComprador) {
-        this.nombreComprador = nombreComprador;
-    }
-    public int getOpcionPago() {
-        return this.opcionPago;
-    }
-    
-    public void setOpcionPago(int opcionPago) {
-        this.opcionPago = opcionPago;
-    }
-    public int getOpcionRetiro() {
-        return this.opcionRetiro;
-    }
-    
-    public void setOpcionRetiro(int opcionRetiro) {
-        this.opcionRetiro = opcionRetiro;
     }
     public Set getCompras() {
         return this.compras;

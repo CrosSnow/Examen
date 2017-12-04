@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 03-12-2017 23:52:18 by Hibernate Tools 4.3.1 -->
+<!-- Generated 04-12-2017 12:25:51 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="Model.Compra" table="compra" catalog="examen" optimistic-lock="version">
         <id name="idCompra" type="java.lang.Integer">
@@ -22,6 +22,15 @@
         </property>
         <property name="precioUnitario" type="int">
             <column name="precio_unitario" not-null="true" />
+        </property>
+        <property name="nombreComprador" type="string">
+            <column name="nombre_comprador" length="30" not-null="true" />
+        </property>
+        <property name="opcionPago" type="int">
+            <column name="opcion_pago" not-null="true" />
+        </property>
+        <property name="opcionRetiro" type="int">
+            <column name="opcion_retiro" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>
