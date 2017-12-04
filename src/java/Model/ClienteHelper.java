@@ -48,6 +48,7 @@ public class ClienteHelper {
             tx.commit();
             Logger.getLogger(ClienteHelper.class.getName()).log(Level.INFO, "Usando metodo AgregarCliente");
             Logger.getLogger(ClienteHelper.class.getName()).log(Level.INFO, "Se a agregado el cliente {0} exitosamente", newClient.getNombreEmpresa());
+            tx = null;
             return id!=0;
         } catch (Exception e) {
             Logger.getLogger(ClienteHelper.class.getName()).log(Level.SEVERE, "No se pudo agregar cliente a la BD:{0}", e.toString());
@@ -66,6 +67,7 @@ public class ClienteHelper {
             tx.commit();
             Logger.getLogger(ClienteHelper.class.getName()).log(Level.INFO, "Usando metodo getClientePorRut");
             Logger.getLogger(ClienteHelper.class.getName()).log(Level.INFO, "Se a obtenido el cliente {0} exitosamente",rut);
+            tx = null;
             return client;
         } catch (Exception e) {
             Logger.getLogger(ClienteHelper.class.getName()).log(Level.SEVERE, "No se pudo obtener el cliente de la BD:{0}", e.toString());

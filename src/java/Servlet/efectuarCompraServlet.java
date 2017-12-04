@@ -102,29 +102,39 @@ public class efectuarCompraServlet extends HttpServlet {
                         opR = 2;
                         break;
                 }
-                Cliente newCliente = new Cliente(rut, nombreEmpresa, direccion, nombreComprador, opP, opR);
+                
                 ClienteHelper clientHelp = new ClienteHelper();
-                if (clientHelp.AgregarCliente(newCliente)) {
-                    cont = 0;
-                    int numeroPedido = Math.round((float)Math.random()*1000);
-                    for (Carretera item : lista) {
-                        Compra newCompra = new Compra(item, newCliente, numeroPedido, cantidades[cont], item.getPrecioPeaje());
+                Cliente oldCliente = clientHelp.getClientePorRut(rut);
+                if (oldCliente==null) {
+                    Cliente newCliente = new Cliente(rut, nombreEmpresa, direccion);
+                    ClienteHelper clientHelpAux = new ClienteHelper();
+                    if (clientHelpAux.AgregarCliente(newCliente)) {
+                        cont = 0;
+                        int numeroPedido = Math.round((float)Math.random()*1000);
+                        for (Carretera item : lista) {
+                            Compra newCompra = new Compra(item, newCliente, numeroPedido, cantidades[cont], item.getPrecioPeaje(), nombreComprador, opP, opR);
+                            CompraHelper comHelp = new CompraHelper();
+                            comHelp.agregarCompra(newCompra);
+                            cont++;
+                        }
                         CompraHelper comHelp = new CompraHelper();
-                        comHelp.agregarCompra(newCompra);
+                        List<Compra> listaCompra = comHelp.obtenerListaPorRut(rut);
+                        int total = Integer.parseInt(totalTXT);
+                        request.setAttribute("total", total);
+                        request.setAttribute("nroPedido", numeroPedido);
+                        request.setAttribute("listaCompra", listaCompra);
+                        request.setAttribute("opcionEnvio", opRetiro);
+                        request.getRequestDispatcher("Voucher.jsp").forward(request, response);
+                    }else{
+                        mensaje = "Error al agregar el cliente";
+                        request.setAttribute("mensaje", mensaje);
+                        request.getRequestDispatcher("index.jsp").forward(request, response);
                     }
-                    CompraHelper comHelp = new CompraHelper();
-                    List<Compra> listaCompra = comHelp.obtenerListaPorRut(rut);
-                    int total = Integer.parseInt(totalTXT);
-                    request.setAttribute("total", total);
-                    request.setAttribute("nroPedido", numeroPedido);
-                    request.setAttribute("listaCompra", listaCompra);
-                    request.setAttribute("opcionEnvio", opRetiro);
-                    request.getRequestDispatcher("Voucher.jsp").forward(request, response);
-                }else{
+                    }else{
                     cont = 0;
                     int numeroPedido = Math.round((float)Math.random()*1000);
                     for (Carretera item : lista) {
-                        Compra newCompra = new Compra(item, newCliente, numeroPedido, cantidades[cont], item.getPrecioPeaje());
+                        Compra newCompra = new Compra(item, oldCliente, numeroPedido, cantidades[cont], item.getPrecioPeaje(), nombreComprador, opP, opR);
                         CompraHelper comHelp = new CompraHelper();
                         comHelp.agregarCompra(newCompra);
                     }

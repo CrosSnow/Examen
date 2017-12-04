@@ -62,7 +62,7 @@ public class buscarPorRutServlet extends HttpServlet {
                 pedido = pedido+item.getCarretera().getNombreCarretera()+" - ";
                 total = (item.getCantidad()*item.getPrecioUnitario())+total;
             }else{
-                String pedidoNuevo = pedido.substring(0, pedido.length()-4);
+                String pedidoNuevo = pedido.substring(0, pedido.length()-2);
                 PedidoCliente newPedido = new PedidoCliente(total, pedidoNuevo);
                 listaCompra.add(newPedido);
                 cont++;
@@ -72,7 +72,7 @@ public class buscarPorRutServlet extends HttpServlet {
                 total = (item.getCantidad()*item.getPrecioUnitario())+total;
             }
         }
-        String pedidoNuevo = pedido.substring(0, pedido.length()-3);
+        String pedidoNuevo = pedido.substring(0, pedido.length()-2);
         PedidoCliente newPedido = new PedidoCliente(total, pedidoNuevo);
         listaCompra.add(newPedido);
         
