@@ -39,10 +39,10 @@ public class efectuarCompraServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession sesion = request.getSession(false);
         
-        String nombreEmpresa = request.getParameter("nombreEmpresa");
-        String rutTXT = request.getParameter("rut");
-        String nombreComprador = request.getParameter("nombreComprador");
-        String direccion = request.getParameter("direccion");
+        String nombreEmpresa = request.getParameter("nombreEmpresa").trim();
+        String rutTXT = request.getParameter("rut").trim();
+        String nombreComprador = request.getParameter("nombreComprador").trim();
+        String direccion = request.getParameter("direccion").trim();
         String opPago = request.getParameter("optPago");
         String opRetiro = request.getParameter("optRetiro");
         List<Carretera> lista = (List<Carretera>)sesion.getAttribute("listaCarreteras");
@@ -50,9 +50,9 @@ public class efectuarCompraServlet extends HttpServlet {
         String totalTXT = request.getParameter("total");
         String mensaje = null;
         
-        if (nombreComprador.isEmpty()&&
-                nombreEmpresa.isEmpty()&&
-                rutTXT.isEmpty()&&
+        if (nombreComprador.isEmpty()||
+                nombreEmpresa.isEmpty()||
+                rutTXT.isEmpty()||
                 direccion.isEmpty()) {
             mensaje = "Los campos no pueden estar vacios";
             request.setAttribute("mensaje", mensaje);
