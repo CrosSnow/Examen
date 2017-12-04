@@ -57,7 +57,7 @@
                     </div>
                     <div class="col-sm-8 panel panel-group panel-info" style="background-color: white">
                         <c:if test="${not empty mensaje}">
-                            <h3 class="alert alert-danger">${mensaje}</h3>
+                            <h5 class="alert alert-danger">${mensaje}</h5>
                         </c:if>
                         <div style="text-align: center">
                             <h4>Datos Empresa</h4>

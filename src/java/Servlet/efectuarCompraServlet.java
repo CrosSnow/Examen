@@ -79,7 +79,7 @@ public class efectuarCompraServlet extends HttpServlet {
                 try {
                     rut = Integer.parseInt(rutTXT);
                 } catch (NumberFormatException e) {
-                    mensaje = "Rut debe ser un numero";
+                    mensaje = "Rut debe ser un número";
                     request.setAttribute("mensaje", mensaje);
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
