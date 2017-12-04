@@ -39,16 +39,6 @@
                 document.getElementById('totalID').value=total;
                 document.getElementById(cbuffer).value=NumCantidad;
             }
-            
-            function noVacio(id){
-                var iderr = "err"+id;
-                var cont = document.getElementById(id).value;
-                if (cont===null || cont===" ") {
-                    document.getElementById(iderr).style="visibility: visible";
-                }else{
-                    document.getElementById(iderr).style="visibility: hidden";
-                }
-            }
         </script>
     </head>
     <body>
@@ -66,6 +56,9 @@
                         </div>           
                     </div>
                     <div class="col-sm-8 panel panel-group panel-info" style="background-color: white">
+                        <c:if test="${not empty mensaje}">
+                            <h3 class="alert alert-danger">${mensaje}</h3>
+                        </c:if>
                         <div style="text-align: center">
                             <h4>Datos Empresa</h4>
                         </div>

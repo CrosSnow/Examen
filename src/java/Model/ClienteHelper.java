@@ -55,4 +55,21 @@ public class ClienteHelper {
         }
     }
     
+    public Cliente getClientePorRut(int rut){
+        Cliente client = null;
+        try {
+            org.hibernate.Transaction tx = sesion.beginTransaction();
+            tx.setTimeout(5);
+            Query q = sesion.createQuery("from Cliente where rut=:param1");
+            q.setInteger("param1", rut);
+            client = (Cliente)q.uniqueResult();
+            tx.commit();
+            Logger.getLogger(ClienteHelper.class.getName()).log(Level.INFO, "Usando metodo getClientePorRut");
+            Logger.getLogger(ClienteHelper.class.getName()).log(Level.INFO, "Se a obtenido el cliente {0} exitosamente",rut);
+            return client;
+        } catch (Exception e) {
+            Logger.getLogger(ClienteHelper.class.getName()).log(Level.SEVERE, "No se pudo obtener el cliente de la BD:{0}", e.toString());
+            return client;
+        }
+    }
 }
