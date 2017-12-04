@@ -5,14 +5,11 @@
  */
 package Servlet;
 
-import Model.Cliente;
-import Model.ClienteHelper;
+import Model.Carretera;
 import Model.Compra;
 import Model.CompraHelper;
-import Model.PedidoCliente;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author CrosSnow
  */
-public class buscarPorRutServlet extends HttpServlet {
+public class replicarPedidoServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,49 +33,43 @@ public class buscarPorRutServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int rut = Integer.parseInt(request.getParameter("rut"));
-        String pedido = "";
+        int numPedido = Integer.parseInt(request.getParameter("numPedido"));
         int total = 0;
-        List<PedidoCliente> listaCompra = new ArrayList<>();
-        List<Cliente> listaCliente = null;
-        List<Compra> listaPedido = null;
-        ClienteHelper cliHelp = new ClienteHelper();
-        listaCliente = cliHelp.getAll();
-        CompraHelper comHelp = new CompraHelper();
-        listaPedido = comHelp.obtenerListaPorRut(rut);
-        List<Integer> numPedido = new ArrayList<>();
-        int cont = 0;
-        for (Compra item : listaPedido) {
-            if (numPedido.isEmpty()) {
-                numPedido.add(item.getNumeroPedido());
-            }else if (numPedido.get(cont)!=item.getNumeroPedido()) {
-                numPedido.add(item.getNumeroPedido());
-                cont++;
-            }
-        }
-        cont = 0;
-        for (Compra item : listaPedido) {
-            if (numPedido.get(cont)==item.getNumeroPedido()) {
-                pedido = pedido+item.getCarretera().getNombreCarretera()+" - ";
-                total = (item.getCantidad()*item.getPrecioUnitario())+total;
-            }else{
-                String pedidoNuevo = pedido.substring(0, pedido.length()-2);
-                PedidoCliente newPedido = new PedidoCliente(total, pedidoNuevo, numPedido.get(cont));
-                listaCompra.add(newPedido);
-                cont++;
-                pedido = "";
-                total = 0;
-                pedido = pedido+item.getCarretera().getNombreCarretera()+" - ";
-                total = (item.getCantidad()*item.getPrecioUnitario())+total;
-            }
-        }
-        String pedidoNuevo = pedido.substring(0, pedido.length()-2);
-        PedidoCliente newPedido = new PedidoCliente(total, pedidoNuevo, numPedido.get(cont));
-        listaCompra.add(newPedido);
+        String opcionRetiro = null;
         
-        request.setAttribute("listaCompra", listaCompra);
-        request.setAttribute("listaCliente", listaCliente);
-        request.getRequestDispatcher("Busqueda.jsp").forward(request, response);
+        List<Compra> listaCompra = null;
+        CompraHelper comHelp = new CompraHelper();
+        listaCompra = comHelp.obtenerListaPorNumPedido(numPedido);
+        int numeroPedido = Math.round((float)Math.random()*10000);
+        for (Compra compra : listaCompra) {
+            total = (compra.getCantidad()*compra.getPrecioUnitario())+total;
+            switch (compra.getOpcionRetiro()) {
+                case 1:
+                    opcionRetiro = "oficina";
+                    break;
+                default:
+                    opcionRetiro = "envioCliente";
+                    break;
+            }
+            Compra newCompra = new Compra(compra.getCarretera(),
+                    compra.getCliente(),
+                    numeroPedido,
+                    compra.getCantidad(),
+                    compra.getPrecioUnitario(),
+                    compra.getNombreComprador(),
+                    compra.getOpcionPago(),
+                    compra.getOpcionRetiro());
+            CompraHelper comHelpAux = new CompraHelper();
+            comHelpAux.agregarCompra(newCompra);
+        }
+        List<Compra> listaCompraNueva = null;
+        CompraHelper comHelpAux = new CompraHelper();
+        listaCompraNueva = comHelpAux.obtenerListaPorNumPedido(numeroPedido);
+        request.setAttribute("total", total);
+        request.setAttribute("nroPedido", numeroPedido);
+        request.setAttribute("listaCompra", listaCompraNueva);
+        request.setAttribute("opcionEnvio", opcionRetiro);
+        request.getRequestDispatcher("Voucher.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

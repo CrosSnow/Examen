@@ -57,4 +57,23 @@ public class CompraHelper {
             return null;
         }
     }
+    
+    public List<Compra> obtenerListaPorNumPedido(int numPedido){
+        List<Compra> list = null;
+        try {
+            org.hibernate.Transaction tx = sesion.beginTransaction();
+            tx.setTimeout(5);
+            Query q = sesion.createQuery("from Compra where numeroPedido=:param1");
+            q.setInteger("param1", numPedido);
+            list = (List<Compra>)q.list();
+            tx.commit();
+            Logger.getLogger(ClienteHelper.class.getName()).log(Level.INFO, "obtenerListaPorNumPedido");
+            Logger.getLogger(ClienteHelper.class.getName()).log(Level.INFO, "Se a obtenido las compras del pedido {0} exitosamente", numPedido);
+            tx = null;
+            return list;
+        } catch (Exception e) {
+            Logger.getLogger(ClienteHelper.class.getName()).log(Level.SEVERE, "No se pudo obtener las compras de la BD:{0}", e.toString());
+            return null;
+        }
+    }
 }

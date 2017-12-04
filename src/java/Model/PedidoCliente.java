@@ -12,10 +12,12 @@ package Model;
 public class PedidoCliente {
     private int total;
     private String pedido;
+    int numPedido;
 
-    public PedidoCliente(int total, String pedido) {
+    public PedidoCliente(int total, String pedido, int numPedido) {
         this.total = total;
         this.pedido = pedido;
+        this.numPedido = numPedido;
     }
 
     public int getTotal() {
@@ -33,6 +35,13 @@ public class PedidoCliente {
     public void setPedido(String pedido) {
         this.pedido = pedido;
     }
-    
+
+    public int getNumPedido() {
+        return numPedido;
+    }
+
+    public void setNumPedido(int numPedido) {
+        this.numPedido = numPedido;
+    }
     
 }

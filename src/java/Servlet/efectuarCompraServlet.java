@@ -110,7 +110,7 @@ public class efectuarCompraServlet extends HttpServlet {
                     ClienteHelper clientHelpAux = new ClienteHelper();
                     if (clientHelpAux.AgregarCliente(newCliente)) {
                         cont = 0;
-                        int numeroPedido = Math.round((float)Math.random()*1000);
+                        int numeroPedido = Math.round((float)Math.random()*10000);
                         for (Carretera item : lista) {
                             Compra newCompra = new Compra(item, newCliente, numeroPedido, cantidades[cont], item.getPrecioPeaje(), nombreComprador, opP, opR);
                             CompraHelper comHelp = new CompraHelper();
@@ -118,7 +118,7 @@ public class efectuarCompraServlet extends HttpServlet {
                             cont++;
                         }
                         CompraHelper comHelp = new CompraHelper();
-                        List<Compra> listaCompra = comHelp.obtenerListaPorRut(rut);
+                        List<Compra> listaCompra = comHelp.obtenerListaPorNumPedido(numeroPedido);
                         int total = Integer.parseInt(totalTXT);
                         request.setAttribute("total", total);
                         request.setAttribute("nroPedido", numeroPedido);
@@ -132,14 +132,14 @@ public class efectuarCompraServlet extends HttpServlet {
                     }
                     }else{
                     cont = 0;
-                    int numeroPedido = Math.round((float)Math.random()*1000);
+                    int numeroPedido = Math.round((float)Math.random()*10000);
                     for (Carretera item : lista) {
                         Compra newCompra = new Compra(item, oldCliente, numeroPedido, cantidades[cont], item.getPrecioPeaje(), nombreComprador, opP, opR);
                         CompraHelper comHelp = new CompraHelper();
                         comHelp.agregarCompra(newCompra);
                     }
                     CompraHelper comHelp = new CompraHelper();
-                    List<Compra> listaCompra = comHelp.obtenerListaPorRut(rut);
+                    List<Compra> listaCompra = comHelp.obtenerListaPorNumPedido(numeroPedido);
                     int total = Integer.parseInt(totalTXT);
                     request.setAttribute("total", total);
                     request.setAttribute("nroPedido", numeroPedido);

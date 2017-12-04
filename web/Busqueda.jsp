@@ -54,7 +54,7 @@
                                 <tr>
                                     <td>${item.getPedido()}</td>
                                     <td>$${item.getTotal()}</td>
-                                    <td> <a href="#">[ + ]</a> </td>
+                                    <td> <a href="replicarPedido.do?numPedido=${item.getNumPedido()}">[ + ]</a> </td>
                                 </tr>
                             </c:forEach>
                         </tbody>

@@ -28,6 +28,10 @@
         <servlet-name>buscarPorRutServlet</servlet-name>
         <servlet-class>Servlet.buscarPorRutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>replicarPedidoServlet</servlet-name>
+        <servlet-class>Servlet.replicarPedidoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>obtenerCarreterasServlet</servlet-name>
         <url-pattern>/obtenerCarretera.do</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>buscarPorRutServlet</servlet-name>
         <url-pattern>/buscarPorRut.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>replicarPedidoServlet</servlet-name>
+        <url-pattern>/replicarPedido.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
