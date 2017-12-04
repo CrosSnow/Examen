@@ -121,9 +121,21 @@ public class efectuarCompraServlet extends HttpServlet {
                     request.setAttribute("opcionEnvio", opRetiro);
                     request.getRequestDispatcher("Voucher.jsp").forward(request, response);
                 }else{
-                    mensaje = "El cliente ya existe en la BD";
-                    request.setAttribute("mensaje", mensaje);
-                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                    cont = 0;
+                    int numeroPedido = Math.round((float)Math.random()*1000);
+                    for (Carretera item : lista) {
+                        Compra newCompra = new Compra(item, newCliente, numeroPedido, cantidades[cont], item.getPrecioPeaje());
+                        CompraHelper comHelp = new CompraHelper();
+                        comHelp.agregarCompra(newCompra);
+                    }
+                    CompraHelper comHelp = new CompraHelper();
+                    List<Compra> listaCompra = comHelp.obtenerListaPorRut(rut);
+                    int total = Integer.parseInt(totalTXT);
+                    request.setAttribute("total", total);
+                    request.setAttribute("nroPedido", numeroPedido);
+                    request.setAttribute("listaCompra", listaCompra);
+                    request.setAttribute("opcionEnvio", opRetiro);
+                    request.getRequestDispatcher("Voucher.jsp").forward(request, response);
                 }
             }
         }
