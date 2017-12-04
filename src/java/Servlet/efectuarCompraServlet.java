@@ -112,9 +112,13 @@ public class efectuarCompraServlet extends HttpServlet {
                         CompraHelper comHelp = new CompraHelper();
                         comHelp.agregarCompra(newCompra);
                     }
+                    CompraHelper comHelp = new CompraHelper();
+                    List<Compra> listaCompra = comHelp.obtenerListaPorRut(rut);
                     int total = Integer.parseInt(totalTXT);
                     request.setAttribute("total", total);
                     request.setAttribute("nroPedido", numeroPedido);
+                    request.setAttribute("listaCompra", listaCompra);
+                    request.setAttribute("opcionEnvio", opRetiro);
                     request.getRequestDispatcher("Voucher.jsp").forward(request, response);
                 }
             }

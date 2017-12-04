@@ -4,6 +4,7 @@
     Author     : CrosSnow
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -28,7 +29,7 @@
                 <br>
                 <div class="col-lg-8">
                     <br><br><br>
-                    <h4>Pedido Número:</h4><br>
+                    <h4>Pedido Número: ${nroPedido}</h4><br>
                     <table class="table table-bordered table-striped table-hover">
                         <thead>
                             <tr class="alert-success">
@@ -37,14 +38,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Ruta 68</td>
-                                <td>20</td>
-                            </tr>
+                            <c:forEach var="item" items="${listaCompra}">
+                                <tr>
+                                    <td>${item.getCarretera().getNombreCarretera()}</td>
+                                    <td>${item.getCantidad()}</td>
+                                </tr>
+                            </c:forEach>
                         </tbody>
                     </table><br>
-                    <h3>Total a pagar:</h3><br>
-                    <h5>Opción de envío:</h5><br><br>
+                    <h3>Total a pagar: ${total}</h3><br>
+                    <h5>Opción de envío: ${opcionEnvio}</h5><br><br>
                     <div style="text-align: center">
                         <br>
                         <h6>Muchas gacias por preferirnos</h6>

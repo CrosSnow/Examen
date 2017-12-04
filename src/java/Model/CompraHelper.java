@@ -6,8 +6,10 @@
 package Model;
 
 import Services.NewHibernateUtil;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
@@ -34,6 +36,25 @@ public class CompraHelper {
         } catch (Exception e) {
             Logger.getLogger(ClienteHelper.class.getName()).log(Level.SEVERE, "No se pudo agregar cliente a la BD:{0}", e.toString());
             return false;
+        }
+    }
+    
+    public List<Compra> obtenerListaPorRut(int rut){
+        List<Compra> list = null;
+        try {
+            org.hibernate.Transaction tx = sesion.beginTransaction();
+            tx.setTimeout(5);
+            Query q = sesion.createQuery("from Compra where rut=:param1");
+            q.setInteger("param1", rut);
+            list = (List<Compra>)q.list();
+            tx.commit();
+            Logger.getLogger(ClienteHelper.class.getName()).log(Level.INFO, "obtenerListaPorRut");
+            Logger.getLogger(ClienteHelper.class.getName()).log(Level.INFO, "Se a obtenido las compras del cliente {0} exitosamente", rut);
+            tx = null;
+            return list;
+        } catch (Exception e) {
+            Logger.getLogger(ClienteHelper.class.getName()).log(Level.SEVERE, "No se pudo obtener las compras de la BD:{0}", e.toString());
+            return null;
         }
     }
 }
