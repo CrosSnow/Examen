@@ -26,7 +26,7 @@
                 var NumPrecio = parseInt(document.getElementById(precio).value);
                 var Buffer = parseInt(document.getElementById(cbuffer).value);
                 var NumCantidad = parseInt(document.getElementById(cantidad).value);
-                var NumTotal = parseInt(document.getElementById('totalID').value;
+                var NumTotal = parseInt(document.getElementById('totalID').value);
                 if (NumTotal===0 && NumCantidad===1) {
                     total = NumPrecio;
                 }else if(NumTotal>0){
