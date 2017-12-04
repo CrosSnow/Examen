@@ -31,13 +31,12 @@
                 <div class="col-lg-8">
                     <br><br><br>
                         <div class="dropdown">
-                            <input class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" value="Rut Cliente" style="width: 500px; text-align: left;">
+                            <input class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" value="Buscar Rut" style="width: 500px; text-align: left;">
                             <ul class="dropdown-menu">
                                 <c:forEach var="item" items="${listaCliente}">
                                     <li> <a href="buscarPorRut.do?rut=${item.getRut()}">${item.getRut()}</a> </li>
                                 </c:forEach>
                             </ul>
-                            <button type="submit" class="btn btn-info">Buscar</button>
                         </div>
                     <br><br><br>
                     <c:if test="${not empty listaCompra}">

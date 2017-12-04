@@ -106,7 +106,7 @@
                         <hr>
                         <p>Seleccione carretera, indique la cantidad y agregue al pedido:</p>
                         <div class="dropdown">
-                            <input class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" value="Carreteras" id="btn" style="width: 500px; text-align: left;">
+                            <input class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" value="Agregar Carreteras" id="btn" style="width: 500px; text-align: left;">
                             <ul class="dropdown-menu">
                                 <li><a href="obtenerCarretera.do?nombreCarretera=Ruta 68">Ruta 68</a></li>
                                 <li><a href="obtenerCarretera.do?nombreCarretera=Autopista Del Sol">Autopista Del Sol</a></li>
